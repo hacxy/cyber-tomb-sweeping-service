@@ -26,7 +26,9 @@ bootstrap(AppModule, {
     //   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     //   next();
     // });
-    // app.enableCors();
+    app.enableCors({
+      origin: '*'
+    });
     app.use(static_(join(__dirname, '..', 'resource')));
   }
 });
