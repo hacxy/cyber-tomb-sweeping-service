@@ -20,15 +20,9 @@ bootstrap(AppModule, {
   },
 
   beforeAppListen(app) {
-    app.use((req, res, next) => {
-      res.header('Access-Control-Allow-Origin', '*');
-      res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-      res.header('Access-Control-Allow-Headers', 'Content-Type, Accept');
-      next();
-    });
     app.enableCors({
-      allowedHeaders: '*',
-      origin: '*'
+      origin: ['https://cyber-tomb-sweeping-api.hacxy.cn'],
+      credentials: true
     });
     app.use(static_(join(__dirname, '..', 'resource')));
   }
