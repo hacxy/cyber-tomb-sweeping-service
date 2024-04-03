@@ -77,6 +77,13 @@ export class AppService {
           await this.prismaService.sacrifice.delete({
             where: { id: result.id }
           });
+
+          const avatarFileName =
+            result.avatar.split('/')[result.avatar.split('/').length - 1];
+          fs.rmSync(
+            path.resolve(__dirname, `../resource/images/${avatarFileName}`)
+          );
+
           return await this.getFirstSacrifices();
         } else {
           return result;

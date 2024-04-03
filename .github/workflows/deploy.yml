@@ -38,7 +38,7 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           source: 'dist,prisma,package.json,pnpm-lock.yaml,ecosystem.config.js'
-          target: '/${{secrets.SSH_USERNAME}}/Projects/.cyber-offer-sacrifices-api_temp/'
+          target: '/${{secrets.SSH_USERNAME}}/Projects/.cyber-tomb-sweeping-service_temp/'
           rm: true
 
       - name: 执行远程脚本命令
@@ -48,10 +48,10 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
-            mkdir -p /${{secrets.SSH_USERNAME}}/Projects/cyber-offer-sacrifices-api/
-            rm -rf /${{secrets.SSH_USERNAME}}/Projects/cyber-offer-sacrifices-api/*
-            cp -rf /${{secrets.SSH_USERNAME}}/Projects/.cyber-offer-sacrifices-api_temp/*  /${{secrets.SSH_USERNAME}}/Projects/cyber-offer-sacrifices-api/
-            cd /${{secrets.SSH_USERNAME}}/Projects/cyber-offer-sacrifices-api/
+            mkdir -p /${{secrets.SSH_USERNAME}}/Projects/cyber-tomb-sweeping-service/
+            rm -rf /${{secrets.SSH_USERNAME}}/Projects/cyber-tomb-sweeping-service/*
+            cp -rf /${{secrets.SSH_USERNAME}}/Projects/.cyber-tomb-sweeping-service_temp/*  /${{secrets.SSH_USERNAME}}/Projects/cyber-tomb-sweeping-service/
+            cd /${{secrets.SSH_USERNAME}}/Projects/cyber-tomb-sweeping-service/
             echo "${{ secrets.PROD_ENV }}" > .env
             pnpm install
             pnpm db:pg
