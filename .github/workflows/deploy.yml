@@ -54,6 +54,7 @@ jobs:
             cd /${{secrets.SSH_USERNAME}}/Projects/cyber-offer-sacrifices-api/
             echo "${{ secrets.PROD_ENV }}" > .env
             pnpm install
+            pnpm db:pg
             pm2 restart ./ecosystem.config.js
 
       - run: echo "部署完成！"
