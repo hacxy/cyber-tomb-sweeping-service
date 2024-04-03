@@ -24,6 +24,7 @@ bootstrap(AppModule, {
       origin: '*',
       methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'OPTIONS'],
       allowedHeaders: [
+        'Access-Control-Allow-Origin',
         'Content-Type',
         'Origin',
         'X-Requested-With',
