@@ -1,0 +1,26 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["linux-musl-openssl-3.0.x", "darwin-arm64", "linux-musl-arm64-openssl-1.1.x", "debian-openssl-3.0.x"]
+  //  客户端导出路径，默认在node_modules/@prisma/client，
+  // 默认路径可能造成vscode无法及时更新类型推导的问题 如果不使用指定导出路径，vscode需要重启才能获取更新后的类型推导，而指定路径则不会出现此问题
+  // output        = "../node_modules/prisma-client"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Sacrifice {
+  id           Int      @id @default(autoincrement())
+  name         String?
+  leftContent  String?
+  rightContent String?
+  avatar       String?
+  showTime     Int?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
