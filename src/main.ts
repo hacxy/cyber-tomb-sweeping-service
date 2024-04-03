@@ -20,7 +20,21 @@ bootstrap(AppModule, {
   },
 
   beforeAppListen(app) {
-    app.enableCors({ origin: '*' });
+    app.enableCors({
+      origin: '*',
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'OPTIONS'],
+      allowedHeaders: [
+        'Content-Type',
+        'Origin',
+        'X-Requested-With',
+        'Accept',
+        'x-client-key',
+        'x-client-token',
+        'x-client-secret',
+        'Authorization'
+      ],
+      credentials: true
+    });
     app.use(static_(join(__dirname, '..', 'resource')));
   }
 });
