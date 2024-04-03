@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'cyber-offer-sacrifices',
+      name: 'cyber-tomb-sweeping-service',
       script: 'dist/main.js',
       watch: '.'
     }
