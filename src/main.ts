@@ -3,6 +3,7 @@ import { AppModule } from './app.module';
 import { bootstrap } from 'uni-nest';
 import { static as static_ } from 'express';
 import { join } from 'node:path';
+import cors from 'cors';
 // class CommonVo {
 //   @ApiProperty()
 //   statusCode: number;
@@ -26,7 +27,10 @@ bootstrap(AppModule, {
     //   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     //   next();
     // });
-    app.enableCors();
+    // app.enableCors({
+    //   origin: '*'
+    // });
+    app.use(cors({ origin: '*' }));
     app.use(static_(join(__dirname, '..', 'resource')));
   }
 });
