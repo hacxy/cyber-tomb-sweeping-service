@@ -10,7 +10,6 @@ bootstrap(AppModule, {
   jwtVerifyOptions: {
     secret: 'ss'
   },
-
   beforeAppListen(app) {
     app.enableCors({
       origin: '*'

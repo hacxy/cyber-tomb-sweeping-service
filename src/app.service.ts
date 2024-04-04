@@ -5,6 +5,7 @@ import { transformDateTime } from './utils';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { ConfigService } from '@nestjs/config';
+
 @Injectable()
 export class AppService {
   constructor(
@@ -62,6 +63,8 @@ export class AppService {
 
   async getFirstSacrifices() {
     const result = await this.prismaService.sacrifice.findFirst();
+    const duration = this.configService.get('DURATION') || 300;
+
     if (result) {
       const currentTime = Math.round(new Date().getTime() / 1000);
       if (!result.showTime) {
@@ -73,7 +76,7 @@ export class AppService {
         });
         return result;
       } else {
-        if (currentTime - result.showTime >= 60) {
+        if (currentTime - result.showTime >= Number(duration)) {
           await this.prismaService.sacrifice.delete({
             where: { id: result.id }
           });
