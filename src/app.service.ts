@@ -78,11 +78,11 @@ export class AppService {
             where: { id: result.id }
           });
 
-          // const avatarFileName =
-          //   result.avatar.split('/')[result.avatar.split('/').length - 1];
-          // fs.rmSync(
-          //   path.resolve(__dirname, `../resource/images/${avatarFileName}`)
-          // );
+          const avatarFileName =
+            result.avatar.split('/')[result.avatar.split('/').length - 1];
+          fs.rmSync(
+            path.resolve(__dirname, `../resource/images/${avatarFileName}`)
+          );
 
           return await this.getFirstSacrifices();
         } else {

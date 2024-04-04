@@ -48,9 +48,11 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
+            mv /${{secrets.SSH_USERNAME}}/Projects/cyber-tomb-sweeping-service/resource /${{secrets.SSH_USERNAME}}/Projects/resource.back 
             mkdir -p /${{secrets.SSH_USERNAME}}/Projects/cyber-tomb-sweeping-service/
             rm -rf /${{secrets.SSH_USERNAME}}/Projects/cyber-tomb-sweeping-service/*
             cp -rf /${{secrets.SSH_USERNAME}}/Projects/.cyber-tomb-sweeping-service_temp/*  /${{secrets.SSH_USERNAME}}/Projects/cyber-tomb-sweeping-service/
+            mv /${{secrets.SSH_USERNAME}}/Projects/resource.back /${{secrets.SSH_USERNAME}}/Projects/cyber-tomb-sweeping-service/resource 
             cd /${{secrets.SSH_USERNAME}}/Projects/cyber-tomb-sweeping-service/
             echo "${{ secrets.PROD_ENV }}" > .env
             pnpm install
